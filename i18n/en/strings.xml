@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="welcome">Welcome to %s!</string>
+	<string name="title">Hipmob Notes</string>
+	<string name="create">New</string>
+	<string name="save">Save</string>
+	<string name="notetitle">Title:</string>
+	<string name="notebody">Body:</string>
+	<string name="createnote">Create Note</string>
+</resources>
