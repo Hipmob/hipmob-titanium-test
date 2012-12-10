@@ -45,5 +45,7 @@
         </splash>
         <theme>default</theme>
     </mobileweb>
-    <modules/>
+    <modules>
+        <module platform="android" version="0.3.0">hipmobtitanium</module>
+    </modules>
 </ti:app>
