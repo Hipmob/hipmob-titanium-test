@@ -40,7 +40,7 @@ function SupportChat()
     		title: 'Hipmob' });
     	dialog.show();
     	setTimeout(function(){ dialog.hide(); }, 2000);
-    	chatView.removeListener('disconnected', on_disconnected);
+    	chatView.removeListener(hipmob.EVENT_DISCONNECTED, on_disconnected);
 	};
 	var on_url = function(e){
 		var dialog = Ti.UI.createAlertDialog({
@@ -51,15 +51,15 @@ function SupportChat()
     	setTimeout(function(){ dialog.hide(); }, 5000);
 	};
 	win.addEventListener('open', function(){
-		chatView.addListener('connected', on_connected);
-		chatView.addListener('disconnected', on_disconnected);
-		chatView.addListener('operatoronline', on_operator_online);
-		chatView.addListener('operatoroffline', on_operator_offline);
-		chatView.addListener('url', on_url);
+		chatView.addListener(hipmob.EVENT_CONNECTED, on_connected);
+		chatView.addListener(hipmob.EVENT_DISCONNECTED, on_disconnected);
+		chatView.addListener(hipmob.EVENT_OPERATOR_ONLINE, on_operator_online);
+		chatView.addListener(hipmob.EVENT_OPERATOR_OFFLINE, on_operator_offline);
+		chatView.addListener(hipmob.EVENT_URL_RECEIVED, on_url);
 		chatView.start();
 	});
 	win.addEventListener('close', function(){
-		chatView.removeListener('connected', on_connected);
+		chatView.removeListener(hipmob.EVENT_CONNECTED, on_connected);
 		chatView.stop();
 	});
 	
