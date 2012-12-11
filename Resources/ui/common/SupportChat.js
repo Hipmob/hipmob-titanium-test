@@ -13,12 +13,11 @@ function SupportChat()
 		return inp.toString().replace(trimLeft,"").replace(trimRight,"");
 	};
 	
-	// manage: 2ea7d86854df4ca185af84e68ea72fe1 
-	// ha: 488b7ecc3a764176b50717278c6a9ea0
+	var appId = "<insert your own Hipmob app id here>";
 	var chatView = hipmob.createHipmobChatView({
 		height: Ti.UI.FILL,
 		width: Ti.UI.FILL,
-		appId: "2ea7d86854df4ca185af84e68ea72fe1",
+		appId: appId,
 		name: "Femi",
 		email: "femi@hipmob.com",
 		context: "starting up with Appcelerator"
