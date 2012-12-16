@@ -46,6 +46,6 @@
         <theme>default</theme>
     </mobileweb>
     <modules>
-        <module platform="android" version="0.3.0">hipmobtitanium</module>
+        <module platform="android" version="0.4.0">hipmobtitanium</module>
     </modules>
 </ti:app>
