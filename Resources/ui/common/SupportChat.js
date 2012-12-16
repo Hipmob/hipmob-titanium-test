@@ -7,7 +7,7 @@ function SupportChat()
 		height: Ti.UI.FILL
 	});
 
-	var hipmob = require("hipmobtitanium");
+	var hipmob = require("com.hipmobtitanium");
 	var trimLeft = /^\s+/, trimRight = /\s+$/;
 	var trim = function(inp){
 		return inp.toString().replace(trimLeft,"").replace(trimRight,"");
