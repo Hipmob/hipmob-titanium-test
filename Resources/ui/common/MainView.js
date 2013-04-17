@@ -87,18 +87,18 @@ function MainView(win)
 	
 	table.addEventListener('click', function(event){
 		var new_window = new add_note(event.rowData.id);
-		new_window.open();
+		if(new_window && 'open' in new_window) new_window.open();
 	});
 	
 	// events
 	new_note.addEventListener('click', function(){
 		var new_window = new add_note();
-		new_window.open();
+		if(new_window && 'open' in new_window) new_window.open();
 	});
 
 	support_chat.addEventListener('click', function(){
 		var new_window = new view_support();
-		new_window.open();
+		if(new_window && 'open' in new_window) new_window.open();
 	})	
 	Ti.App.addEventListener('app:newnote', function(){
 		table.setData(load_data());

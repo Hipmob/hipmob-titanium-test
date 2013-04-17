@@ -14,6 +14,12 @@ function SupportChat()
 	};
 	
 	var appId = "<insert your own Hipmob app id here>";
+	if(appId == "<insert your own Hipmob app id here>"){
+		alert("Please edit the Resources/ui/common/SupportChat.js file and insert a valid Hipmob App ID into the appId variable.")
+		win.close();
+		return;
+	}
+	//var appId = "7152ce24a16d42eb8d30b5fe4c01f911";
 	var chatView = hipmob.createHipmobChatView({
 		height: Ti.UI.FILL,
 		width: Ti.UI.FILL,
