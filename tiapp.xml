@@ -13,7 +13,7 @@
     <name>Titanium Test</name>
     <version>1.0</version>
     <publisher>Olufemi Omojola</publisher>
-    <url>http://</url>
+    <url>http://www.hipmob.com</url>
     <description>not specified</description>
     <copyright>2012 by Olufemi Omojola</copyright>
     <icon>appicon.png</icon>
@@ -47,6 +47,6 @@
         <theme>default</theme>
     </mobileweb>
     <modules>
-        <module platform="android" version="0.5.0">com.hipmobtitanium</module>
+        <module platform="android" version="0.6.1">com.hipmobtitanium</module>
     </modules>
 </ti:app>
