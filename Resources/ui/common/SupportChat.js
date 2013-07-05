@@ -22,11 +22,12 @@ function SupportChat()
 		return;
 	}
 	var hipmob = false;
-	if(android) hipmob = require("com.hipmobtitanium");
-	if(iphone) hipmob = require("com.hipmobtitanium.ios");
+	if(android || iphone) hipmob = require("com.hipmobtitanium");
 	
 	//var appId = "7152ce24a16d42eb8d30b5fe4c01f911";
 	var chatView = hipmob.createHipmobChatView({
+		top: 0,
+		left: 0,
 		height: Ti.UI.FILL,
 		width: Ti.UI.FILL,
 		appId: appId,

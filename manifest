@@ -1,8 +1,8 @@
-#appname: Titanium Test
-#publisher: Olufemi Omojola
-#url: http://
-#image: appicon.png
-#appid: com.hipmob.titanium.android.test
-#desc: undefined
-#type: mobile
-#guid: c5ede410-01b8-4354-84a4-5ee2a8c9db9b
+#appname:HipmobTest
+#publisher:Olufemi Omojola
+#url:http://www.hipmob.com
+#image:appicon.png
+#appid:com.hipmob.titanium.android.test
+#desc:not specified
+#type:ipad
+#guid:c5ede410-01b8-4354-84a4-5ee2a8c9db9b

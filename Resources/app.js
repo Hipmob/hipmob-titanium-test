@@ -35,6 +35,8 @@ if (Ti.version < 1.8 ) {
 		// All other platforms follow a similar UI pattern.
 		if (osname === 'android') {
 			Window = require('ui/handheld/android/ApplicationWindow');
+		}else if (osname === 'iphone') {
+			Window = require('ui/handheld/iphone/ApplicationWindow');
 		}
 		else {
 			Window = require('ui/handheld/ApplicationWindow');
