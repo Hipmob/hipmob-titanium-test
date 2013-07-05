@@ -1,0 +1,163 @@
+<h1>hipmob_titanium_android Module</h1>
+<h2>Description</h2>
+<p>This is a Titanium module that provides access to the Hipmob live chat view within a Titanium application. Hipmob provides an SDK for real-time communication that can be used to provide live support to your users (via chat) or to build user-to-user chat or group chat into your mobile or web app; it's as simple as downloading our libraries (for iOS, Android or the web), integrating them into your apps with an app key we provide and then your app has real-time communications (so you can talk to users or they can talk to each other). No server setup or code to write, just real time communication that scales with you: talk with your users, make them happy. This module extends support for the Hipmob live chat to all Titanium Android apps.</p>
+<p>Get your free account from <a href="https://manage.hipmob.com/">https://manage.hipmob.com</a> and get started.</p>
+<h2>Accessing the hipmob_titanium_ios Module</h2>
+<p>To access this module from JavaScript, you would do the following:</p>
+<ol>
+<li>Add this to the <code>&lt;modules /&gt;</code> node in <em>tiapp.xml</em>: </li>
+</ol>
+<pre>&lt;modules&gt;
+     &lt;module platform="ios" version="0.3.0"&gt;com.hipmobtitanium.ios&lt;/module&gt;
+&lt;/modules&gt;</pre>
+
+<ol>
+<li>
+<p>Add this to your javascript: <code>var hipmob = require('com.hipmobtitanium.ios');</code></p>
+</li>
+<li>
+<p>The <strong>hipmob</strong> variable is now a reference to the Module object.</p>
+</li>
+</ol>
+<h2>Reference</h2>
+<h2>createHipmobChatView({options:object})</h2>
+<p>returns a chat view initialized with the necessary settings.</p>
+<p>The app id can be obtained by visiting <a href="https://manage.hipmob.com/">https://manage.hipmob.com</a> and creating a free account. The user id is a unique identifier associated with the app's user that you provide: it could be generated from your backend, or retrieved from a third-party authentication system (such as Facebook or Twitter) and is optional for support chats. For user-to-user chat the user id is required, and you must also supply a peer: the unique identifier associated with the other user in the conversation.</p>
+<h3>Usage</h3>
+<pre>var chatView = hipmob.createChatView({
+    appId: "&lt;your app id&gt;",
+    userId: "&lt;your user's id&gt;", // optional
+    top: 0, //optional
+    left: 0, // optional
+    right: 0, // optional
+    bottom: 0, // optional
+    peer: "&lt;peer's id (for user-to-user chat)&gt;", // optional
+    name: "&lt;user's name&gt;", // optional
+    email: "&lt;user's email&gt;", // optional
+    context: "&lt;user's context information&gt;", // optional
+    location: "&lt;user's location string&gt;" // optional
+});
+</pre>
+
+<h2>Life Cycle</h2>
+<p>Once the containing window is shown, call the start() function to initialize the chat session. When the containing window is about to be closed (or in the close event handler) call the stop() function to shutdown the chat session.</p>
+<h2>chatView.start()</h2>
+<p>Called once the containing window has been shown: this initializes the chat session.</p>
+<h3>Usage</h3>
+<pre>chatView.start();</pre>
+
+<h2>chatView.stop()</h2>
+<p>Called once the containing window is being discarded: this shuts down the chat session and releases any associated resources.</p>
+<h3>Usage</h3>
+<pre>chatView.stop();</pre>
+
+<h2>chatView.setName()</h2>
+<p>Called to update the user's name (which is transmitted to the operator or used as the display name for any peer-to-peer messages).</p>
+<h3>Usage</h3>
+<pre>chatView.setName(newName);</pre>
+
+<h2>chatView.setEmail()</h2>
+<p>Called to update the user's email address (which is transmitted to the operator).</p>
+<h3>Usage</h3>
+<pre>chatView.setEmail(newEmailAddress);</pre>
+
+<h2>chatView.setContext()</h2>
+<p>Called to update the user's context information (which is transmitted to the operator). The context information can be used to indicate to the operator specific actions the user is taking (for example, in a shopping application it could show the product the user is looking at as they browse the store).</p>
+<h3>Usage</h3>
+<pre>chatView.setContext(newContext);</pre>
+
+<h2>chatView.setLocation()</h2>
+<p>Called to update the user's location string (which is transmitted to the operator).</p>
+<h3>Usage</h3>
+<pre>chatView.setLocation(newLocation);</pre>
+
+<h2>hipmob.EVENT_CONNECTED</h2>
+<p>returns the constant for EVENT_CONNECTED -- for use in an event listener</p>
+<h3>Usage</h3>
+<pre>chatView.addEventListener(hipmob.EVENT_CONNECTED, function(data){
+    alert("chat session was just connected");
+});</pre>
+
+<h2>hipmob.EVENT_DISCONNECTED</h2>
+<p>returns the constant for EVENT_DISCONNECTED -- for use in an event listener</p>
+<h3>Usage</h3>
+<pre>chatView.addEventListener(hipmob.EVENT_DISCONNECTED, function(data){
+    alert("chat session was just disconnected");
+});</pre>
+
+<h2>hipmob.EVENT_MESSAGE_RECEIVED</h2>
+<p>returns the constant for EVENT_MESSAGE_RECEIVED -- for use in an event listener.</p>
+<p>The event data contains the following keys:</p>
+<ol>
+<li>from: the display name of the user or operator who sent the message.</li>
+<li>text: the body of the message.</li>
+<li>sender: the Hipmob identifier of the user who sent the message (for peer-to-peer messages) or the app (for support messages).</li>
+<li>type: the type of message. The only valid type is TEXT.</li>
+</ol>
+<h3>Usage</h3>
+<pre>chatView.addEventListener(hipmob.EVENT_MESSAGE_RECEIVED, function(data){
+    alert("message received from ["+data.from+"]: ["+data.text+"]");    
+});</pre>
+
+<h2>hipmob.EVENT_OPERATOR_ONLINE</h2>
+<p>returns the constant for EVENT_OPERATOR_ONLINE -- for use in an event listener</p>
+<h3>Usage</h3>
+<pre>chatView.addEventListener(hipmob.EVENT_OPERATOR_ONLINE, function(data){
+    alert("operators are standing by");
+});</pre>
+
+<h2>hipmob.EVENT_OPERATOR_OFFLINE</h2>
+<p>returns the constant for EVENT_OPERATOR_OFFLINE -- for use in an event listener</p>
+<h3>Usage</h3>
+<pre>chatView.addEventListener(hipmob.EVENT_OPERATOR_OFFLINE, function(data){
+    alert("no operators are currently available");
+});</pre>
+
+<h2>hipmob.EVENT_USER_ONLINE</h2>
+<p>returns the constant for EVENT_USER_ONLINE -- for use in an event listener</p>
+<p>The event data contains a single key: user, the unique identifier for the other user that came online.</p>
+<h3>Usage</h3>
+<pre>chatView.addEventListener(hipmob.EVENT_USER_ONLINE, function(data){
+    alert("["+data.user+"] is now online");
+});</pre>
+
+<h2>hipmob.EVENT_OPERATOR_OFFLINE</h2>
+<p>returns the constant for EVENT_USER_OFFLINE -- for use in an event listener</p>
+<p>The event data contains a single key: user, the unique identifier for the other user that came online.</p>
+<h3>Usage</h3>
+<pre>chatView.addEventListener(hipmob.EVENT_USER_OFFLINE, function(data){
+    alert("["+data.user+"] is no longer available");
+});</pre>
+
+<h2>hipmob.EVENT_URL_RECEIVED</h2>
+<p>returns the constant for EVENT_URL_RECEIVED -- for use in an event listener</p>
+<p>The event data includes a single key: url, the URL that was pushed. If no event handler is set for this
+event then the URL will be launched with an Intent.</p>
+<h3>Usage</h3>
+<pre>chatView.addEventListener(hipmob.EVENT_URL_RECEIVED, function(data){
+    alert("received a url: ["+data.url+"]");
+});</pre>
+
+<h2>Usage</h2>
+<p>See example.</p>
+<h2>Author</h2>
+<p>Femi Omojola &lt;femi@hipmob.com&gt;
+Learn more at https://www.hipmob.com/.</p>
+<h2>License</h2>
+<p>The MIT License</p>
+<p>Copyright (c) 2012-2013 Orthogonal Labs, Inc. (http://www.hipmob.com)</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p>

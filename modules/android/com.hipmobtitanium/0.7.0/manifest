@@ -1,0 +1,18 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 0.7.0
+apiversion: 2
+description: Live sales and support chat for your Titanium application.
+author: Femi Omojola <femi@hipmob.com>
+license: BSD
+copyright: Copyright (c) 2012 - 2013 Orthogonal Labs, Inc.
+
+
+# these should not be edited
+name: HipmobChat
+moduleid: com.hipmobtitanium
+guid: b7630e28-08fa-42a6-8389-6d268f9f3426
+platform: android
+minsdk: 2.1.4.GA
